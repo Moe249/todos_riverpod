@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:todos_riverpod/utils/config.dart';
 
 import 'lite_rolling_switch.dart';
@@ -23,25 +24,28 @@ class TodoTitle extends StatelessWidget {
             fontWeight: FontWeight.w100,
           ),
         ),
-        LiteRollingSwitch(
-          value: true,
-          animationDuration: Duration(milliseconds: 300),
-          textOn: 'Dark',
-          textOff: 'Light',
-          textOffColor: Colors.black,
-          colorOn: Theme.of(context).primaryColor,
-          iconOffColor: Colors.black,
-          colorOff: Theme.of(context).accentColor,
-          iconOn: Icons.settings_display,
-          iconOff: Icons.settings_display,
-          textSize: 16.0,
-          onTap: () {
-            themeInstance.switchTheme();
-          },
-          onChanged: (bool state) {},
-          onSwipe: () {
-            themeInstance.switchTheme();
-          },
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: LiteRollingSwitch(
+            value: true,
+            animationDuration: Duration(milliseconds: 300),
+            textOn: 'Dark',
+            textOff: 'Light',
+            textOffColor: Colors.black,
+            colorOn: Theme.of(context).primaryColor,
+            iconOffColor: Colors.black,
+            colorOff: Theme.of(context).accentColor,
+            iconOn: Icons.settings_display,
+            iconOff: Icons.settings_display,
+            textSize: 16.0,
+            onTap: () {
+              themeInstance.switchTheme();
+            },
+            onChanged: (bool state) {},
+            onSwipe: () {
+              themeInstance.switchTheme();
+            },
+          ),
         ),
       ],
     );
